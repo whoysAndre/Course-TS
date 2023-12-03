@@ -83,6 +83,26 @@ const estudiante: Estudiante = {
   grado: "Universidad"
 };
 
+/*----Interfaces complejas----*/
+interface Client {
+  nombre: string;
+  edad: number;
+  address: Address;
+}
+
+interface Address{
+  id: number,
+  country: string
+}
+
+const employee: Client = {
+  nombre: 'Rodrigo',
+  edad: 20,
+  address: {
+    id: 1,
+    country: 'Ohaio'
+  }
+}
 /*----POO----*/
 /*class User{
   public name: String; //->Publica
@@ -95,14 +115,21 @@ const estudiante: Estudiante = {
 
 const user1 = new User('Rodrigo',20);
 console.log(user1);*/
-class User{
-  private name: String;
-  private age: Number;
-  constructor(name: String , age: Number){
+
+/*--Implementando una interfaz */
+
+interface Xmen {
+  name: String;
+  age: number;
+}
+class User implements Xmen{
+  public name: String;
+  public age: number;
+  constructor(name: String , age: number){
     this.name = name,
     this.age = age
   }
-  //Geters and setters
+  //Geters and setters sirven para los privados
   getName(): String {
     return this.name;
   }
@@ -117,3 +144,16 @@ console.log(user1.getName()); //->Por consola Rodrigo
 user1.setName('Andre');
 console.log(user1.getName());//->Se actualizo el dato a André
 
+/*----DESTRUCTUTING DE OBJETOS----*/
+type Autos = {
+  marca: String,
+  year: number
+};
+
+
+const objAuto: Autos = {
+  marca: 'mazda',
+  year: 2023
+}
+
+const {marca,year}:Autos = objAuto;
